@@ -20,7 +20,28 @@ class MissionDeserializer:
 
 		return mission_data_dict
 
-	def get_waypoints(self, data):
+	def get_waypoints(self, data): #data is a list??? mission["waypoints"]
+		coordList = []
+		if len(data[0]) == 4:
+			for coordPair in data:
+				lat = coordPair['latitude']
+				long = coordPair['longitude']
+				rad = coordPair['radius']
+				height = coordPair['height']
+				coordList.append((lat, long, rad, height))
+		elif len(data[0]) == 3:
+			for coordPair in data:
+				lat = coordPair['latitude']
+				long = coordPair['longitude']
+				alt = coordPair['altitude']
+				coordList.append((lat, long, alt))
+		else:
+			for coordPair in data:
+				lat = coordPair['latitude']
+				long = coordPair['longitude']
+				coordList.append((lat, long))
+		# print(coordList)
+		return (coordList)
 
 	def get_lost_comm_pos(self, data):
 
