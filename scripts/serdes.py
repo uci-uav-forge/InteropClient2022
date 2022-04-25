@@ -20,7 +20,7 @@ class MissionDeserializer:
 
 		return mission_data_dict
 
-	def get_waypoints(self, data): #data is a list??? mission["waypoints"] 
+	def get_waypoints(self, data): #data is a list?? mission["waypoints"]
 		coordList = []
 		if len(data[0]) == 4:
 			for coordPair in data:
